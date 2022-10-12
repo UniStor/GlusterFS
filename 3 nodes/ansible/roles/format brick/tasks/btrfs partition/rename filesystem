@@ -1,25 +1,17 @@
 ---
-# - debug:
-#     msg: "btrfs filesystem label /dev/{{ item +'1'}} gluster.{{fs_uuid}}"
-#   loop: "{{ empty_drive }}"
 
-#---------------------------------------------
 - name: update facts to get new partition uuid
   setup:
-
-- debug:
-    msg: "Hello {{item}}"
-  loop: "{{ empty_drive }}"
 
 - name: Get UUID of newly created filesystem
   set_fact:
     fs_uuid: "{{ ansible_facts.devices[ item ].partitions[ item+'1' ].uuid }}"
   loop: "{{ empty_drive }}"
 
-- debug:
-    msg: "Filesystem UUID: {{fs_uuid}}"
-
 - name: rename filesystem to gluster.UUID
   become: true
   ansible.builtin.command: "btrfs filesystem label /dev/{{ item +'1'}} gluster.{{fs_uuid}}"
   loop: "{{ empty_drive }}"
+
+# - debug:
+#     msg: "Filesystem UUID: {{fs_uuid}}"
