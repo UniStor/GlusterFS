@@ -1,13 +1,2 @@
 ---
-# - name: Print all available facts
-#   ansible.builtin.debug:
-#     var: ansible_facts
-
-- debug:
-    var: ansible_facts.devices["vdb"]
-
-- name: get devices
-  ansible.builtin.debug:
-    msg: "Hello {{ item.value.partitions }}"
-    # msg: "{{ item.key }}" #- {{ item.value }}"
-  loop: "{{ ansible_facts.devices | dict2items }}"
+- include_tasks: '{{ brick_type }}'

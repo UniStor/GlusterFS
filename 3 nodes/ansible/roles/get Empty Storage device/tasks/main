@@ -1,0 +1,28 @@
+---
+### Works:
+# source: https://www.tinfoilcipher.co.uk/2022/04/06/ansible-looping-over-lists-and-dictionaries/
+# https://www.middlewareinventory.com/blog/ansible-list-examples-how-to-create-and-append-items-to-list/
+
+# - name: get Empty Storage drive
+#   debug:
+#     msg: "......Storage: {{ item.key }} and {{item.value.host}}"
+#   loop: "{{ lookup('dict', ansible_facts.devices) }}"
+#   when: (item.value.partitions | length == 0) and (item.value.host in storage_type)
+
+# -------------------------------------
+
+
+- name: create Storage device list
+  ansible.builtin.set_fact:
+    empty_drive: []
+
+- name: Add Empty Storage device
+  set_fact:
+    empty_drive: "{{ empty_drive + [item.key] }}"
+  loop: "{{ lookup('dict', ansible_facts.devices) }}"
+  when: (item.value.partitions | length == 0) and (item.value.host in storage_type)
+
+
+- name: Print all Empty storage
+  debug:
+    var: empty_drive

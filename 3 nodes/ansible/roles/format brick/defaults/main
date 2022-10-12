@@ -1,0 +1,5 @@
+---
+
+fsname: "gluster-"
+
+brick_type: "btrfs partition"

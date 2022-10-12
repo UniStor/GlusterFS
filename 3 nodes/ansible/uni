@@ -5,5 +5,5 @@
     filesystem: "xfs"
 
   roles:
-  - get Empty drive
-  # - format brick
+  - get Empty Storage device
+  - format brick

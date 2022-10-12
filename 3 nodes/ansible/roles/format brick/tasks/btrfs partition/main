@@ -1,0 +1,26 @@
+---
+
+- name: Format debug
+  debug:
+    var: empty_drive
+
+- name: Create a new partition on Empty device
+  become: true
+  community.general.parted:
+    device: "/dev/{{ item }}"
+    label: gpt
+    number: 1
+    state: present
+    # fs_type: ext4
+  loop: "{{ empty_drive }}"
+
+
+- name: Create a btrfs filesystem
+  become: true
+  community.general.filesystem:
+    fstype: btrfs
+    dev: "/dev/{{ item }}1"
+    opts: "-L {{fsname}}{{num}}"
+  loop: "{{ empty_drive }}"
+  loop_control:
+    index_var: num
