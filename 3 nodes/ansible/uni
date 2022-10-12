@@ -1,0 +1,8 @@
+---
+- hosts: local
+  vars:
+    somevar: "value"
+
+  roles:
+  - hello
+  - world
