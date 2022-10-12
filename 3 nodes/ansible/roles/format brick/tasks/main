@@ -1,2 +1,8 @@
 ---
-- include_tasks: '{{ brick_type }}'
+- include_tasks: '{{ brick_type }}/main'
+- include_tasks: '{{ brick_type }}/rename filesystem'
+
+### Works for a Single empty storage device per node!
+# Fix it to work with Any number of devices.
+
+# You may have to use `wipefs -af /dev/sdXY` before running

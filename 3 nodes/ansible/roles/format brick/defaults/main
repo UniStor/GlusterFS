@@ -1,5 +1,5 @@
 ---
 
-fsname: "gluster-"
+fs_name_prefix: "gluster"
 
 brick_type: "btrfs partition"

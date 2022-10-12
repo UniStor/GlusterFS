@@ -1,8 +1,10 @@
 ---
-
-- name: Format debug
-  debug:
-    var: empty_drive
+### Works
+# - name: Get UUID of a newly created partition
+#   debug:
+#     msg: "UUID = {{ ansible_facts.devices[ item ].partitions[ item+'1' ].uuid }}"
+#   loop: "{{ empty_drive }}"
+#--------------------------------------------------
 
 - name: Create a new partition on Empty device
   become: true
@@ -11,16 +13,16 @@
     label: gpt
     number: 1
     state: present
-    # fs_type: ext4
   loop: "{{ empty_drive }}"
 
 
-- name: Create a btrfs filesystem
+# To make this work, you may have to use `wipefs -af /dev/sdXY` before running
+- name: Create a btrfs filesystem - and set Label to UUID
   become: true
   community.general.filesystem:
     fstype: btrfs
     dev: "/dev/{{ item }}1"
-    opts: "-L {{fsname}}{{num}}"
+    opts: "-L {{ fs_name_prefix }}{{ num }}"
   loop: "{{ empty_drive }}"
   loop_control:
     index_var: num
