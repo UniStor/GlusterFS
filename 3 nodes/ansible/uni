@@ -1,8 +1,8 @@
 ---
-- hosts: local
+- hosts: single #node
   vars:
-    somevar: "value"
+    use_lvm: false
+    filesystem: "xfs"
 
   roles:
-  - hello
-  - world
+  - format brick
