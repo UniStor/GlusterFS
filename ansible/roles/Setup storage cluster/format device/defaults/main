@@ -1,3 +1,6 @@
 ---
 
-brick_type: "btrfs partition"
+brick_type: "partition"
+# brick_type: "lvm thin"
+
+filesystem: "btrfs"

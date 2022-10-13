@@ -1,5 +1,4 @@
 ---
-fstype: "btrfs"
 
 fs_label_prefix: "gluster."
 

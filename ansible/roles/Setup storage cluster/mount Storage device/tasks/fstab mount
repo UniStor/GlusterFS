@@ -1,0 +1,10 @@
+---
+- name: Mount in FStab by UUID
+  become: true
+  ansible.posix.mount:
+    path: "{{mount_home}}/{{mount_name}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
+    src: "UUID={{ ansible_device_links.uuids[ item ] | join(',') }}"
+    fstype: "{{filesystem}}"
+    opts: noatime
+    state: mounted
+  loop: "{{ gluster_partition }}"

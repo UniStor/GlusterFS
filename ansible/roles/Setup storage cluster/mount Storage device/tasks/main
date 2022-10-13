@@ -1,5 +1,4 @@
 ---
-### Works
 ## debug:
 # - name: Find Partitions who's label matches Gluster.UUID
 #   debug:
@@ -10,8 +9,8 @@
 
 #----------------------------------------------------------
 
-- name: Make a List of Partitions formatted for Gluster
 # iterate over partitions, and keeep if label matches Gluster.UUID
+- name: Get Partitions formatted for Gluster
   set_fact:
     gluster_partition: "{{ gluster_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
@@ -19,12 +18,4 @@
     fs_label_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
 
 
-- name: Mount in FStab by UUID
-  become: true
-  ansible.posix.mount:
-    path: "/mnt/gluster/{{ ansible_device_links.uuids[ item ] | join(',') }}"
-    src: "UUID={{ ansible_device_links.uuids[ item ] | join(',') }}"
-    fstype: "{{fstype}}"
-    opts: noatime
-    state: mounted
-  loop: "{{ gluster_partition }}"
+- include_tasks: fstab mount
