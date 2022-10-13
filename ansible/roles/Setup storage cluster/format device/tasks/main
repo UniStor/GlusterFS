@@ -1,6 +1,5 @@
 ---
 - include_tasks: '{{ brick_type }}/main'
-- include_tasks: '{{ brick_type }}/rename filesystem'
 
 ### Works for a Single empty storage device per node!
 # Fix it to work with Any number of devices.

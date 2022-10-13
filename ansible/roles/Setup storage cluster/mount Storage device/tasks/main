@@ -10,7 +10,7 @@
 #----------------------------------------------------------
 
 # iterate over partitions, and keeep if label matches Gluster.UUID
-- name: Get Partitions formatted for Gluster
+- name: Get Partitions formatted for Gluster - Only works after Reboot, because partition name doesn't update! i.e. `ansible_device_links.labels`
   set_fact:
     gluster_partition: "{{ gluster_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
@@ -18,4 +18,10 @@
     fs_label_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
 
 
-- include_tasks: fstab mount
+- name: Debug
+  debug:
+    msg: "FSTab {{mount_home}}/{{mount_name}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
+  loop: "{{ gluster_partition }}"
+
+
+# - include_tasks: fstab mount
