@@ -1,4 +1,10 @@
+. .prefix
+
 for vm in 1 2 3
 do
-  sudo virsh shutdown gluster-$vm
+  state=$(sudo virsh domstate $prefix$vm)
+
+  if [ "$state" != "shut off" ]; then
+    sudo virsh shutdown $prefix$vm
+  fi
 done

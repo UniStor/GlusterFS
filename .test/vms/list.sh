@@ -1,4 +1,6 @@
-for vm in 1 
+. .prefix
+
+for vm in 1
 do
-  sudo virsh snapshot-list gluster-$vm
+  sudo virsh snapshot-list $prefix$vm
 done

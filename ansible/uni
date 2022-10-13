@@ -7,9 +7,9 @@
     use_dns: false
 
   roles:
-  # - Cluster
+  - Cluster
   - Setup storage cluster
-  # - Gluster/install
+  - Gluster/install
   # - Gluster/peer
 
 # Problem: Works for a Single empty storage device per node!
