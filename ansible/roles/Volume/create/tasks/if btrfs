@@ -1,0 +1,11 @@
+---
+
+- name: create gluster volume
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: present
+    name: "{{volume_name}}"
+    bricks: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}/dir"
+    rebalance: yes
+    cluster: "{{ groups['nodes'] }}"
+  run_once: true
