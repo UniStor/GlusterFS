@@ -1,5 +1,6 @@
 ---
 dependencies:
+# - Setup storage cluster/NTP
 - Setup storage cluster/set hostname
 # - Setup storage cluster/get Empty Storage device
 # - Setup storage cluster/format device

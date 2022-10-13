@@ -4,10 +4,12 @@
   vars:
     use_lvm: false
     filesystem: "btrfs"
+    use_dns: false
 
   roles:
+  # - DNS
   - Setup storage cluster
-  - Gluster/install
+  # - Gluster/install
   # - Gluster/peer
 
 # Problem: Works for a Single empty storage device per node!

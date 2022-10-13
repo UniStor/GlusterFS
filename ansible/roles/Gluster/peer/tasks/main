@@ -13,3 +13,6 @@
       - 192.168.122.222
       - 192.168.122.101
       - 192.168.122.188
+
+# Todo! use cluster template
+# https://github.com/Source-Graph/Ansible.Cluster.example

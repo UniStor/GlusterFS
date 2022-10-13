@@ -6,3 +6,25 @@
 
 # Quick & dirty, but Not ideal!
 # https://stackoverflow.com/questions/58859092/how-do-i-correctly-use-the-ansible-hostname-module
+
+- name: update facts to get new .ansible_hostname
+  setup:
+
+- name: Make a block of ips & hostnames
+  set_fact:
+    hosts_block: "{{hosts_block + hostvars[item].ansible_default_ipv4.address + '   ' + hostvars[item].ansible_hostname + '\n'}}"
+  with_items: "{{ groups['nodes'] }}"
+
+- name: Add mappings to /etc/hosts
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    create: yes
+    block: |
+      {{hosts_block}}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+  when: not use_dns
+
+# - name: debug hosts block
+#   debug:
+#     var: hosts_block
