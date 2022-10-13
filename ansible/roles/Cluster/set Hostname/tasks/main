@@ -1,0 +1,11 @@
+---
+# FIX: Convert This to use a loop and index to set hostname to "gluster{{num}}" instead. May have to be a separate role for that
+- name: update hostnames
+  become: true
+  hostname:
+    name: "{{ new_hostname }}"
+
+- name: update facts to get new .ansible_hostname
+  setup:
+# Quick & dirty, but Not ideal!
+# https://stackoverflow.com/questions/58859092/how-do-i-correctly-use-the-ansible-hostname-module

@@ -1,0 +1,6 @@
+---
+dependencies:
+- Cluster/DNS
+- Cluster/NTP
+- Cluster/set Hostname  # runs before Hosts file
+- Cluster/Hosts file
