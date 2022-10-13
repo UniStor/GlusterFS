@@ -16,5 +16,20 @@
 
 
 - name: Get other Node IPs
-  debug:
-    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
+  set_fact:
+    other_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
+
+
+- name: Step 4 - Configure the firewall
+  become: true
+  ansible.builtin.iptables:
+    chain: INPUT
+    source: "{{item}}"
+    protocol: all
+    jump: ACCEPT
+    # comment: accept all traffic from the other node
+  loop: "{{ other_nodes }}"
+
+- name: FIX Firewall
+
+# https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted

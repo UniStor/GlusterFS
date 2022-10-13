@@ -7,9 +7,9 @@ ansible_user=me
 ansible_become_password=u
 
 [test]
-192.168.122.222
-192.168.122.188
-192.168.122.101
+192.168.122.222 new_hostname=gluster1
+192.168.122.188 new_hostname=gluster2
+192.168.122.101 new_hostname=gluster3
 
 [test:vars]
 ansible_user=me

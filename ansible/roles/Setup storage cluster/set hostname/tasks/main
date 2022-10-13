@@ -1,0 +1,8 @@
+---
+- name: update hostnames
+  become: true
+  hostname:
+    name: "{{ new_hostname }}"
+
+# Quick & dirty, but Not ideal!
+# https://stackoverflow.com/questions/58859092/how-do-i-correctly-use-the-ansible-hostname-module
