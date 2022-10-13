@@ -1,3 +1,4 @@
-sudo virsh shutdown gluster-1
-sudo virsh shutdown gluster-2
-sudo virsh shutdown gluster-3
+for vm in 1 2 3
+do
+  sudo virsh shutdown gluster-$vm
+done
