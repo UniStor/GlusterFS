@@ -33,5 +33,5 @@
     src: "UUID={{ ansible_device_links.uuids[ item ] | join(',') }}"
     fstype: "{{fstype}}"
     opts: noatime
-    state: present
+    state: mounted
   loop: "{{ gluster_partition }}"
