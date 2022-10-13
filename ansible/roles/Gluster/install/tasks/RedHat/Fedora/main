@@ -30,6 +30,11 @@
     # comment: accept all traffic from the other node
   loop: "{{ other_nodes }}"
 
-- name: FIX Firewall
-
+# Fixes:
+- name: Firewalld allow gluster
+  become: true
+  ansible.posix.firewalld:
+    service: glusterfs
+    permanent: yes
+    state: enabled
 # https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted
