@@ -1,5 +1,4 @@
 ---
-# - hosts: single
 - hosts: nodes
   vars:
     use_lvm: false
@@ -8,9 +7,12 @@
 
   roles:
   - Cluster
-  - Setup storage cluster
   - Gluster/install
-  # - Gluster/peer
+  - Setup storage cluster
 
 # Problem: Works for a Single empty storage device per node!
 ## Fix it to work with Any number of devices.
+
+- hosts: single
+  roles:
+  - Gluster/peer

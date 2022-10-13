@@ -1,4 +1,5 @@
 . .prefix
+snap_name=$1
 
 is_shutdown(){
   for vm in 1 2 3
@@ -23,5 +24,5 @@ snapshot(){
 
 . shutdown.sh
 is_shutdown
-snapshot
+snapshot $snap_name
 . start.sh

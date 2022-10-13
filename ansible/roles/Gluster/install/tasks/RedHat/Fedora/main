@@ -27,8 +27,11 @@
     source: "{{item}}"
     protocol: all
     jump: ACCEPT
+    # make idempotent:
+    chain_management: yes
     # comment: accept all traffic from the other node
   loop: "{{ other_nodes }}"
+  notify: flush iptables INPUT
 
 # Fixes:
 - name: Firewalld allow gluster

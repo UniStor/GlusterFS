@@ -1,0 +1,7 @@
+---
+
+- name: flush iptables INPUT
+  become: true
+  ansible.builtin.iptables:
+    chain: "INPUT"
+    flush: yes
