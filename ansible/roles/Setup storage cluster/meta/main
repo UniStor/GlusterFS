@@ -1,0 +1,5 @@
+---
+dependencies:
+- Setup storage cluster/get Empty Storage device
+- Setup storage cluster/format device
+- Setup storage cluster/get formatted brick

@@ -1,6 +1,6 @@
 ---
 
-fs_name_prefix: "gluster."
+fs_label_prefix: "gluster."
 
 
 ## Make this work with Multiple Drives!

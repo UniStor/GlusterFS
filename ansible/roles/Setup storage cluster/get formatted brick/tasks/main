@@ -3,10 +3,10 @@
 ## debug:
 # - name: Find Partitions who's label matches Gluster.UUID
 #   debug:
-#     msg: "Partition Label......... {{'gluster.' + ansible_device_links.uuids[ item.key ] | join(',') }}"
+#     msg: "Partition... {{fs_label_prefix + ansible_device_links.uuids[ item.key ] | join(',') }}"
 #   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
 #   when:
-#   - fs_name_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
+#   - fs_label_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
 
 #----------------------------------------------------------
 
@@ -16,7 +16,7 @@
     gluster_partition: "{{ gluster_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
   when: >
-    fs_name_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
+    fs_label_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
 
 
 - name: Mount in FStab by UUID

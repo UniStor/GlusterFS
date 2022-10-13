@@ -1,6 +1,6 @@
 ---
 fstype: "btrfs"
 
-fs_name_prefix: "gluster."
+fs_label_prefix: "gluster."
 
 gluster_partition: []

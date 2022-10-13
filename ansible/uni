@@ -1,0 +1,13 @@
+---
+# - hosts: single
+- hosts: nodes
+  vars:
+    use_lvm: false
+    filesystem: "xfs"
+
+  roles:
+  # - Setup storage cluster
+  - Gluster/install
+
+# Problem: Works for a Single empty storage device per node!
+## Fix it to work with Any number of devices.
