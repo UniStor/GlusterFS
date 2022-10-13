@@ -1,0 +1,29 @@
+---
+### Works
+# - name: Find Partitions who's label matches Gluster.UUID
+#   debug:
+#     msg: "Partition Label......... {{'gluster.' + ansible_device_links.uuids[ item.key ] | join(',') }}"
+#   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
+#   when:
+#   - fs_name_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
+#   - debug
+
+#----------------------------------------------------------
+
+- name: Make a List of Partitions formatted for Gluster
+# label must match Gluster.UUID
+  set_fact:
+    gluster_partition: "{{ gluster_partition + [item.key] }}"
+  loop: "{{ lookup('dict', ansible_device_links.labels) }}"
+  when: >
+    fs_name_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
+
+
+- name: Show
+  debug:
+    msg: "{{ gluster_partition }}"
+
+- name: get UUID
+  debug:
+    msg: "fs_name_prefix + ansible_device_links.uuids[ item.key ]"
+  loop: gluster_partition

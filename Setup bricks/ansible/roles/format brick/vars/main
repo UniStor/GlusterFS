@@ -1,5 +1,9 @@
 ---
+
+fs_name_prefix: "gluster."
+
+
 ## Make this work with Multiple Drives!
-# test
+### for testing:
 # empty_drive:
 # - vdb

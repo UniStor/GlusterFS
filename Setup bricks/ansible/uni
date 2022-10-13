@@ -1,12 +1,14 @@
 ---
-- hosts: node #single #node
+- hosts: single #node
+# - hosts: node
   vars:
     use_lvm: false
     filesystem: "xfs"
 
   roles:
-  - get Empty Storage device
-  - format brick
+  # - get Empty Storage device
+  # - format brick
+  - get gluster brick
 
 ### Works for a Single empty storage device per node!
 # Fix it to work with Any number of devices.
