@@ -10,10 +10,6 @@
 
 #----------------------------------------------------------
 
-# - name: create Storage device list
-#   ansible.builtin.set_fact:
-#     gluster_partition: []
-
 - name: Make a List of Partitions formatted for Gluster
 # label must match Gluster.UUID
   set_fact:
@@ -33,7 +29,7 @@
 - name: Mount in FStab by UUID
   become: true
   ansible.posix.mount:
-    path: "/mnt/{{fs_name_prefix}}{{ ansible_device_links.uuids[ item ] | join(',') }}"
+    path: "/mnt/gluster/{{ ansible_device_links.uuids[ item ] | join(',') }}"
     src: "UUID={{ ansible_device_links.uuids[ item ] | join(',') }}"
     fstype: "{{fstype}}"
     opts: noatime

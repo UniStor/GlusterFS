@@ -5,4 +5,4 @@ type_virtual: "SCSI storage controller: Red Hat, Inc. Virtio block device (rev 0
 storage_type:
   - "{{ type_virtual }}"
 
-# empty_drive: []
+empty_drive: []

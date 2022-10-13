@@ -12,10 +12,6 @@
 # -------------------------------------
 
 
-- name: create Storage device list
-  ansible.builtin.set_fact:
-    empty_drive: []
-
 - name: Add Empty Storage device
   set_fact:
     empty_drive: "{{ empty_drive + [item.key] }}"
