@@ -3,7 +3,7 @@
 - hosts: nodes
   vars:
     use_lvm: false
-    filesystem: "xfs"
+    filesystem: "btrfs"
 
   roles:
   # - Setup storage cluster

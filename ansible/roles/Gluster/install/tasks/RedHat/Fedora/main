@@ -1,8 +1,20 @@
 ---
-- name: Install 
-  ansible.builtin.dnf:
-    name:
-      - httpd
-      - mariadb-server
-    state: latest
-  become: true
+
+# - name: Install glusterfs-server
+#   ansible.builtin.dnf:
+#     name:
+#       - glusterfs-server
+#     state: latest
+#   become: true
+#
+# - name: Enable & Start GlusterFS management daemon
+#   ansible.builtin.systemd:
+#     name: glusterd
+#     enabled: yes
+#     state: started
+#   become: true
+
+
+- name: Get other Node IPs
+  debug:
+    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
