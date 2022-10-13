@@ -1,8 +1,11 @@
 ---
 
+fs_label_prefix: "gluster."
+
 type_virtual: "SCSI storage controller: Red Hat, Inc. Virtio block device (rev 01)"
 
 storage_type:
   - "{{ type_virtual }}"
 
 empty_drive: []
+gluster_partition: []

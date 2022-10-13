@@ -1,9 +1,0 @@
----
-
-fs_label_prefix: "gluster."
-
-
-## Make this work with Multiple Drives!
-### for testing:
-# empty_drive:
-# - vdb

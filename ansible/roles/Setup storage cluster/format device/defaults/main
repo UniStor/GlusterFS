@@ -4,3 +4,6 @@ brick_type: "partition"
 # brick_type: "lvm thin"
 
 filesystem: "btrfs"
+
+mount_home: /var
+mount_name: glusterbrick
