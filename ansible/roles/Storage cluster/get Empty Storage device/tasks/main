@@ -9,7 +9,9 @@
     empty_drive: "{{ empty_drive + [item.key] }}"
   loop: "{{ lookup('dict', ansible_facts.devices) }}"
   when: (item.value.partitions | length == 0) and (item.value.host in storage_type)
-
+  # Reduce output
+  loop_control:
+    label: "{{ item.key }}"
 
 - name: Print all Empty storage
   debug:

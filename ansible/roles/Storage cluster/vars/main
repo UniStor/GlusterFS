@@ -8,4 +8,4 @@ storage_type:
   - "{{ type_virtual }}"
 
 empty_drive: []
-gluster_partition: []
+storage_partition: []

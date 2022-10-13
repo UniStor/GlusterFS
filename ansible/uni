@@ -1,18 +1,23 @@
 ---
-- hosts: nodes
-  vars:
-    use_lvm: false
-    filesystem: "btrfs"
-    use_dns: false
-
-  roles:
-  - Cluster
-  - Gluster/install
-  - Setup storage cluster
+# - hosts: nodes
+#   vars:
+#     use_lvm: false
+#     filesystem: "btrfs"
+#     use_dns: false
+#
+#   roles:
+#   - Cluster
+#   - Gluster/install
+#   - Storage cluster
 
 # Problem: Works for a Single empty storage device per node!
 ## Fix it to work with Any number of devices.
 
+- hosts: nodes
+  roles:
+  - bind mount
+
 - hosts: single
   roles:
-  - Gluster/peer
+  # - Gluster/peer
+  # - Volume/create

@@ -1,5 +1,10 @@
 ---
 
+- name: update facts to get new filesystems
+  setup:
+
+- include_tasks: "{{playbook_dir}}/roles/Storage cluster/get/tasks/partiton formatted for Use"
+
 - name: Mount in FStab by UUID
   become: true
   ansible.posix.mount:
@@ -8,4 +13,4 @@
     fstype: "{{filesystem}}"
     opts: noatime
     state: mounted
-  loop: "{{ gluster_partition }}"
+  loop: "{{ storage_partition }}"

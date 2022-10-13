@@ -1,0 +1,15 @@
+---
+# iterate over partitions, and keeep if label matches `fs_label_prefix` i.e. "gluster."
+
+- name: Get Partitions formatted for Storage Cluster - Simpler `fs_label_prefix` only
+  set_fact:
+    storage_partition: "{{ storage_partition + [item.key] }}"
+  loop: "{{ lookup('dict', ansible_device_links.labels) }}"
+  when: fs_label_prefix in item.value
+
+
+# - name: debug Bind mount UUID............
+#   debug:
+#     msg: |
+#       UUID={{ ansible_device_links.uuids[ item ] | join(',') }}
+#   loop: "{{ storage_partition }}"

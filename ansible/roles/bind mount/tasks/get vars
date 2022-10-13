@@ -1,0 +1,7 @@
+---
+- name: Include vars from Storage cluster
+  ansible.builtin.include_vars:
+    file: "{{item}}"
+  with_items:
+    - "{{playbook_dir}}/roles/Storage cluster/vars/main"
+    - "{{playbook_dir}}/roles/Storage cluster/defaults/main"
