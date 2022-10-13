@@ -1,14 +1,12 @@
 ---
 
-- include_tasks: get vars
-
-- include_tasks: "{{playbook_dir}}/roles/Storage cluster/get/tasks/partiton formatted for Use"
-
+- include_role:
+    name: "{{playbook_dir}}/roles/Storage cluster/get"
 
 - name: Bind Mount in FStab from UUID
   become: yes
   ansible.posix.mount:
-    path: "{{mount_home}}/{{mount_name}}/brick{{brick_number}}"
+    path: "{{bind_mount}}{{brick_number}}"
     src: "{{mount_home}}/{{mount_name}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
     opts: bind
     state: mounted

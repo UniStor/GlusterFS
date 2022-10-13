@@ -1,0 +1,28 @@
+---
+
+# Must be first so it doesn't overwrite 'brick_number'
+- include_vars:
+    file: "{{playbook_dir}}/roles/Volume/create/defaults/main"
+
+- include_role:
+    name: "{{playbook_dir}}/roles/Storage cluster/get"
+
+
+- name: Create btrfs Subvolume for gluster
+  ansible.builtin.command: "btrfs subvolume create {{ volume_name }}"
+  args:
+    chdir: "{{ bind_mount }}{{ brick_number }}"
+    creates: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}"
+  when: filesystem == "btrfs"
+  become: yes
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+
+
+- debug:
+    msg: "Todo when other filesystem!"
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+  when: filesystem in ['ext4', 'xfs']

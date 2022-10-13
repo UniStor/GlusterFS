@@ -1,0 +1,7 @@
+---
+dependencies:
+- cluster/DNS
+- cluster/NTP
+- cluster/set Hostname  # runs before Hosts file
+- cluster/Hosts file
+- cluster/Heartbeat

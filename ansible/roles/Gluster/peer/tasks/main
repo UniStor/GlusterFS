@@ -2,8 +2,8 @@
 
 - name: Get all nodes
   set_fact:
-    all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) }}"
-    # all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | join(',') }}"
+    all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) }}"  # List
+    # all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | join(',') }}" # String
 
 - debug:
     msg: "List: {{ all_nodes }} of type: {{ all_nodes | type_debug }}"
@@ -15,10 +15,6 @@
   gluster.gluster.gluster_peer:
     state: present
     nodes: "{{ all_nodes }}"
-    # nodes:
-    #   - 192.168.122.222
-    #   - 192.168.122.101
-    #   - 192.168.122.188
 
 # Todo! use cluster template
 # https://github.com/Source-Graph/Ansible.Cluster.example

@@ -6,7 +6,7 @@
 #     use_dns: false
 #
 #   roles:
-#   - Cluster
+#   - cluster
 #   - Gluster/install
 #   - Storage cluster
 
@@ -15,7 +15,8 @@
 
 - hosts: nodes
   roles:
-  - bind mount
+  # - Storage cluster/bind mount
+  - Volume/directory
 
 - hosts: single
   roles:

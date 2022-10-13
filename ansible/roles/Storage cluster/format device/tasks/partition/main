@@ -20,7 +20,7 @@
 - name: Create a btrfs filesystem - and set Label to UUID
   become: true
   community.general.filesystem:
-    fstype: btrfs
+    fstype: "{{ filesystem }}"
     dev: "/dev/{{ item }}1"
     opts: "-L {{ fs_label_prefix }}"
   loop: "{{ empty_drive }}"
