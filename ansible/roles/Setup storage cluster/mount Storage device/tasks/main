@@ -1,18 +1,14 @@
 ---
 
-# iterate over partitions, and keeep if label matches "gluster."
+- name: update facts to get new filesystems
+  setup:
+
+# iterate over partitions, and keeep if label matches `fs_label_prefix` i.e. "gluster."
 - name: Get Partitions formatted for Gluster - Simpler `fs_label_prefix` only
   set_fact:
     gluster_partition: "{{ gluster_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
   when: fs_label_prefix in item.value
-
-
-
-- name: Debug
-  debug:
-    msg: "FSTab {{mount_home}}/{{mount_name}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
-  loop: "{{ gluster_partition }}"
 
 
 - include_tasks: fstab mount

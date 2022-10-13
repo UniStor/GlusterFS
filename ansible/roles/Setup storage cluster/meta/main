@@ -3,3 +3,8 @@ dependencies:
 - Setup storage cluster/get Empty Storage device
 - Setup storage cluster/format device
 - Setup storage cluster/mount Storage device
+
+### Works for a Single empty storage device per node!
+# Fix it to work with Any number of devices.
+
+# You may have to run on a clean disk? use `wipefs -af /dev/sdXY` before running
