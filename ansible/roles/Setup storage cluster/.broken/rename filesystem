@@ -8,10 +8,11 @@
     fs_uuid: "{{ ansible_facts.devices[ item ].partitions[ item+'1' ].uuid }}"
   loop: "{{ empty_drive }}"
 
-- name: rename filesystem to gluster.UUID
+- name: rename filesystem to gluster.UUID - Breaks 'mount Storage device' because label doesn't update!
   become: true
   ansible.builtin.command: "btrfs filesystem label /dev/{{ item +'1'}} gluster.{{fs_uuid}}"
   loop: "{{ empty_drive }}"
+
 
 # - debug:
 #     msg: "Filesystem UUID: {{fs_uuid}}"

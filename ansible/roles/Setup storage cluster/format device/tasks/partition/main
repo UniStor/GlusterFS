@@ -26,7 +26,4 @@
   loop: "{{ empty_drive }}"
 
 
-# - debug:
-#     msg: "BEFORE Rename..............."
-
-- include_tasks: rename filesystem
+# - include_tasks: rename filesystem
