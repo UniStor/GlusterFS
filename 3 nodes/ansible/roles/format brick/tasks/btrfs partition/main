@@ -22,7 +22,5 @@
   community.general.filesystem:
     fstype: btrfs
     dev: "/dev/{{ item }}1"
-    opts: "-L {{ fs_name_prefix }}{{ num }}"
+    opts: "-L {{ fs_name_prefix }}"
   loop: "{{ empty_drive }}"
-  loop_control:
-    index_var: num
