@@ -1,7 +1,6 @@
 ---
+fs_type: "btrfs"
+
 fs_name_prefix: "gluster."
 
-# gluster_partition: []
-
-# gluster_partition:
-#   - vda1
+gluster_partition: []
