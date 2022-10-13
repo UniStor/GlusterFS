@@ -11,19 +11,12 @@
 #----------------------------------------------------------
 
 - name: Make a List of Partitions formatted for Gluster
-# label must match Gluster.UUID
+# iterate over partitions, and keeep if label matches Gluster.UUID
   set_fact:
     gluster_partition: "{{ gluster_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
   when: >
     fs_name_prefix + ansible_device_links.uuids[ item.key ] | join(',') in item.value
-
-
-## debug:
-# - name: get UUID
-#   debug:
-#     msg: "{{ ansible_device_links.uuids[ item ] | join(',') }}"
-#   loop: "{{ gluster_partition }}"
 
 
 - name: Mount in FStab by UUID

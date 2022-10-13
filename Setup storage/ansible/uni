@@ -1,6 +1,6 @@
 ---
-- hosts: single #node
-# - hosts: node
+# - hosts: single
+- hosts: nodes
   vars:
     use_lvm: false
     filesystem: "xfs"
