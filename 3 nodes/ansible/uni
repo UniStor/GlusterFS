@@ -1,5 +1,5 @@
 ---
-- hosts: single #node
+- hosts: node #single #node
   vars:
     use_lvm: false
     filesystem: "xfs"
