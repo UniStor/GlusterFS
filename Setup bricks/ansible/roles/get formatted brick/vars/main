@@ -1,0 +1,7 @@
+---
+fs_name_prefix: "gluster."
+
+# gluster_partition: []
+
+# gluster_partition:
+#   - vda1

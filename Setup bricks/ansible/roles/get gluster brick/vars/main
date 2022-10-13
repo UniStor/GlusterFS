@@ -1,4 +1,0 @@
----
-fs_name_prefix: "gluster."
-
-gluster_partition: []

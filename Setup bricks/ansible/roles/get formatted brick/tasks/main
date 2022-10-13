@@ -10,6 +10,10 @@
 
 #----------------------------------------------------------
 
+- name: create Storage device list
+  ansible.builtin.set_fact:
+    gluster_partition: []
+
 - name: Make a List of Partitions formatted for Gluster
 # label must match Gluster.UUID
   set_fact:
@@ -25,5 +29,6 @@
 
 - name: get UUID
   debug:
-    msg: "fs_name_prefix + ansible_device_links.uuids[ item.key ]"
-  loop: gluster_partition
+    # msg: "{{ ansible_device_links.uuids[ item ] }}"
+    msg: "{{ ansible_device_links.uuids[ item ] | join(',') }}"
+  loop: "{{ gluster_partition }}"
