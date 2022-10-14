@@ -1,5 +1,6 @@
 ---
 dependencies:
+- volume  # get vars like `volume_name`
 - Storage cluster/get Empty Storage device
 - Storage cluster/format device
 - Storage cluster/mount Storage device

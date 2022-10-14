@@ -1,0 +1,3 @@
+---
+dependencies:
+- Volume  # get vars like `volume_name`

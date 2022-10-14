@@ -2,8 +2,8 @@
 # - name: Setup Storage Cluster
 #   import_playbook: cluster
 
-- name: Create Volume
-  import_playbook: volume
+# - name: Create Volume
+#   import_playbook: volume
 
-# - name: Connect from OS
-#   import_playbook: client
+- name: Connect from OS
+  import_playbook: client

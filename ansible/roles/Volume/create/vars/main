@@ -1,5 +1,5 @@
 ---
-
+# Volume Types configuration
 
 dispersed:
   type_name: "dispersed"

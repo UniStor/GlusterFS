@@ -1,16 +1,13 @@
 ---
-- name: Get default volume_name & Set mount_dir by Distribution
+- name: Set mount_dir by Distribution
   include_vars:
-    file: "{{item}}"
-  loop:
-    - "{{playbook_dir}}/roles/Volume/create/defaults/main"
-    - "{{role_path}}/vars/{{ ansible_os_family }}-{{ ansible_distribution }}"
+    file: "{{role_path}}/vars/{{ ansible_os_family }}-{{ ansible_distribution }}"
 
 
 - name: Mount Gluster volume
   become: yes
   ansible.posix.mount:
-    src: "{{ hostvars[groups['nodes'][0]]['ansible_hostname'] }}:/{{volume_name}}"
+    src: "{{ hostvars[groups['cluster'][0]]['ansible_hostname'] }}:/{{volume_name}}"
     path: "{{mount_dir}}/{{volume_name}}"
     state: mounted
     fstype: glusterfs

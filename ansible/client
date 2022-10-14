@@ -1,4 +1,7 @@
 ---
+- hosts: cluster
+  gather_facts: true
+
 - hosts: client
   roles:
   - client/mount

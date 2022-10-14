@@ -1,6 +1,4 @@
 ---
-volume_name: 'simple_gluster'
-
 brick_type: "partition"
 # brick_type: "lvm thin"
 
