@@ -5,5 +5,5 @@
 - name: Create Volume
   import_playbook: master
 
-- name: Connect from OS
-  import_playbook: client
+# - name: Connect from OS
+#   import_playbook: client

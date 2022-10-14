@@ -4,8 +4,15 @@
 - name: update facts to get new filesystems
   setup:
 
+- name: Clear from previous play
+  set_fact:
+    storage_partition: []
+
 - name: Get Partitions formatted for Storage Cluster - Simpler `fs_label_prefix` only
   set_fact:
     storage_partition: "{{ storage_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
   when: fs_label_prefix in item.value
+
+- debug:
+    msg: "Running once ........................................................................ {{storage_partition}}"

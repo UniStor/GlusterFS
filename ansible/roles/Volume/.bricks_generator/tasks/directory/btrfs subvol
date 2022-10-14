@@ -1,4 +1,9 @@
 ---
+- debug:
+    msg: "Before {{ storage_partition }}"
+
+
+
 - name: Create btrfs Subvolume for gluster
   ansible.builtin.command: "btrfs subvolume create {{ btrfs_main_volume }}"
   args:
