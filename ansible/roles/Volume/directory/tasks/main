@@ -1,8 +1,6 @@
 ---
-
-# Must be first so it doesn't overwrite 'brick_number'
 - include_vars:
-    file: "{{playbook_dir}}/roles/Volume/create/defaults/main"
+    file: "{{playbook_dir}}/roles/Volume/create/vars/main"
 
 
 
