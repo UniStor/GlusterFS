@@ -5,13 +5,12 @@
     file: "{{playbook_dir}}/roles/Volume/create/defaults/main"
 
 
+
 - include_tasks: if btrfs
   when: filesystem == "btrfs"
 
-
 - include_tasks: if btrfs
-  when: filesystem in ['ext4', 'xfs']
+  when: filesystem == "xfs"
 
-
-- include_tasks: if ZFS
+- include_tasks: if zfs
   when: filesystem == "zfs"

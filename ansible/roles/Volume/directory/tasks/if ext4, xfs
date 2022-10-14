@@ -4,3 +4,6 @@
   ansible.builtin.file:
     path: "{{export}}{{brick_number}}/{{brick_final_dir}}"
     state: directory
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number

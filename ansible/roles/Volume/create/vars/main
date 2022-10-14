@@ -3,5 +3,5 @@ btrfs_main_volume: "current"
 
 brick_final_dir: "brick"
 
-# default:
-# brick_number: 0
+
+bricks_list: []

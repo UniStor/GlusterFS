@@ -2,13 +2,20 @@
 
 # - include_tasks: "{{playbook_dir}}/roles/Storage cluster/get/tasks/storage vars"
 
+- name: Number of bricks
+  set_fact:
+    bricks_list: "{{bricklist + brick_number}}"
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+
+
+
 - include_tasks: if btrfs
   when: filesystem == "btrfs"
 
-
 - include_tasks: if btrfs
-  when: filesystem in ['ext4', 'xfs']
+  when: filesystem == "xfs"
 
-
-- include_tasks: if ZFS
+- include_tasks: if zfs
   when: filesystem == "zfs"
