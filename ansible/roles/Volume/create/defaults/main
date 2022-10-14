@@ -1,4 +1,4 @@
 ---
-volume_name: 'simple_gluster'
-
 brick_number: 0
+
+btrfs_main_volume: "current"

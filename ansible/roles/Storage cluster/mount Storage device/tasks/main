@@ -1,11 +1,15 @@
 ---
 
+# Using Brick Naming Convention: https://docs.gluster.org/en/latest/Administrator-Guide/Brick-Naming-Conventions/
+
 - name: Mount in FStab by UUID
   become: true
   ansible.posix.mount:
-    path: "{{export}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
+    path: "{{export}}{{brick_number}}"
     src: "UUID={{ ansible_device_links.uuids[ item ] | join(',') }}"
     fstype: "{{filesystem}}"
     opts: noatime
     state: mounted
   loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number

@@ -1,9 +1,9 @@
 ---
 - name: Create btrfs Subvolume for gluster
-  ansible.builtin.command: "btrfs subvolume create {{ volume_name }}"
+  ansible.builtin.command: "btrfs subvolume create {{ btrfs_main_volume }}"
   args:
-    chdir: "{{ bind_mount }}{{ brick_number }}"
-    creates: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}"
+    chdir: "{{export}}{{brick_number}}"
+    creates: "{{export}}{{brick_number}}/{{ btrfs_main_volume }}"
   become: yes
   loop: "{{ storage_partition }}"
   loop_control:
@@ -13,5 +13,5 @@
 - name: Create a directory inside btrfs subvolume
   become: true
   ansible.builtin.file:
-    path: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}/dir"
+    path: "{{export}}{{brick_number}}/{{ btrfs_main_volume }}/dir"
     state: directory

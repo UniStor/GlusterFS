@@ -1,12 +1,7 @@
 ---
+volume_name: 'simple_gluster'
 
 brick_type: "partition"
 # brick_type: "lvm thin"
 
 filesystem: "btrfs"
-
-storage_pool: gluster
-
-export: "/export/{{storage_pool}}"
-
-bind_mount: "{{export}}/brick"

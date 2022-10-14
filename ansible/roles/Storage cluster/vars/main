@@ -1,4 +1,11 @@
 ---
+storage_pool: glusterfs
+
+export: "/data/{{storage_pool}}/{{volume_name}}/brick"
+
+bind_mount: "{{export}}"
+# uses FSH Brick Naming Conventions: https://docs.gluster.org/en/latest/Administrator-Guide/Brick-Naming-Conventions/
+
 
 fs_label_prefix: "gluster."
 

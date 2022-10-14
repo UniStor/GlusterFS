@@ -5,7 +5,7 @@
   gluster.gluster.gluster_volume:
     state: present
     name: "{{volume_name}}"
-    bricks: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}/dir"
+    bricks: "{{export}}{{brick_number}}/{{ btrfs_main_volume }}/dir"
     rebalance: yes
     cluster: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
     # using Hostnames
