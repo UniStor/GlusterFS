@@ -1,0 +1,6 @@
+---
+dependencies:
+- Volume  # get vars like `volume_name`
+-format Block devices/mount Storage device
+
+# Try moving this out to another play!

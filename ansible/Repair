@@ -1,6 +1,1 @@
----
-- hosts: Repair
-  gather_facts: true
-  roles:
-  - Repair/autologin
-  - Repair/tools
+play/Repair

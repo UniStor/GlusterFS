@@ -1,9 +1,7 @@
 ---
 dependencies:
-- volume  # get vars like `volume_name`
 - Storage cluster/get Empty Storage device
 - Storage cluster/format device
-- Storage cluster/mount Storage device
 
 ### Works for a Single empty storage device per node!
 # Fix it to work with Any number of devices.
