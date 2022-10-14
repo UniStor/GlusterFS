@@ -1,0 +1,5 @@
+---
+- include_tasks: btrfs subvol
+  when: filesystem == "btrfs"
+
+- include_tasks: directory

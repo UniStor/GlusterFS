@@ -1,7 +1,4 @@
 ---
 
-# - include_tasks: .test.erase volume
-
-# - include_tasks: simple volume
-
-- include_tasks: fix duplicate
+- include_tasks: simple volume
+  when: not dispersed

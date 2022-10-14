@@ -1,8 +1,5 @@
 ---
 
-- include_tasks: directory/btrfs subvol
-
-
 - name: Generate Bricks list Join
   set_fact:
     generated_bricks: "{{ generated_bricks + [(export, brick_number, '/', btrfs_main_volume, '/', brick_final_dir) | join] }}"

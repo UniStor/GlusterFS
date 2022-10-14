@@ -1,4 +1,0 @@
----
-
-- debug:
-    msg: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }} And .................... {{brick_string}}"
