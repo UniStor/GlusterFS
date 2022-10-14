@@ -18,7 +18,7 @@
 - hosts: single
   roles:
   - Gluster/peer
-  - Volume/create/simple volume
+  # - Volume/create/simple volume
 
 # - hosts: client
 #   roles:
