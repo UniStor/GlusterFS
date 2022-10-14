@@ -1,0 +1,17 @@
+---
+
+- name: Remove the bricks from gluster volume
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: present
+    name: "{{volume_name}}"
+    bricks: "/data/glusterfs/simple_gluster/brick0/current/brick"
+    cluster: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }}"
+    force: true
+  run_once: true
+
+- name: remove gluster volume
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: absent
+    name: "{{volume_name}}"

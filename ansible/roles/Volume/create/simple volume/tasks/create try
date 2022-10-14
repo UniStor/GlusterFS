@@ -1,0 +1,11 @@
+---
+
+- name: create gluster volume
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: present
+    name: "{{volume_name}}"
+    bricks: "{{generated_bricks}}"
+    rebalance: yes
+    cluster: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }}"
+  run_once: true

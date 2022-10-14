@@ -1,4 +1,10 @@
 ---
+# Requires gather_facts to run independently
+- hosts: cluster
+  gather_facts: true
+  roles:
+  - Volume/.brick_generator
+
 - hosts: master
   vars:   # Todo: Make vars persist between Plays. Solution: https://stackoverflow.com/questions/33896847/how-do-i-set-register-a-variable-to-persist-between-plays-in-ansible
   roles:
