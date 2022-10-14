@@ -6,6 +6,6 @@ brick_type: "partition"
 filesystem: "btrfs"
 
 mount_home: /var
-mount_name: glusterbrick
+mount_name: gluster
 
 bind_mount: "{{mount_home}}/{{mount_name}}/brick"

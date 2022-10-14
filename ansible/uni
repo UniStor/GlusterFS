@@ -11,20 +11,17 @@
     use_dns: false
 
   roles:
-  # - cluster
-  # - Gluster/install
+  - cluster
+  - Gluster/install
   - Storage cluster
-#   - Volume/directory
+  - Volume/directory
 
 
-# Problem: Works for a Single empty storage device per node!
-## Fix it to work with Any number of devices.
+- hosts: single
+  roles:
+  - Gluster/peer
+  - Volume/create
 
-# - hosts: single
-#   roles:
-#   - Gluster/peer
-#   - Volume/create
-
-# - hosts: client
-#   roles:
-#   - client/mount
+- hosts: client
+  roles:
+  - client/mount
