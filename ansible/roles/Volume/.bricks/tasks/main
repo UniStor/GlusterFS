@@ -1,11 +1,12 @@
 ---
 
-- name: Number of bricks
-  set_fact:
-    brick_list: "{{brick_list + [brick_number]}}"
-  loop: "{{ storage_partition }}"
-  loop_control:
-    index_var: brick_number
+## Works!
+# - name: Number of bricks
+#   set_fact:
+#     brick_list: "{{brick_list + [brick_number]}}"
+#   loop: "{{ storage_partition }}"
+#   loop_control:
+#     index_var: brick_number
 
 
 # - name: Print...............

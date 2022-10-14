@@ -1,3 +1,2 @@
 ---
-- include_tasks: storage vars
 - include_tasks: partiton formatted for Use

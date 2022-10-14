@@ -2,12 +2,25 @@
 
 # using DNS Hostnames instead of ip addresses
 
-- name: create gluster volume
-  become: yes
-  gluster.gluster.gluster_volume:
-    state: present
-    name: "{{volume_name}}"
-    bricks: "{{export}}{{brick_number}}/{{ btrfs_main_volume }}/{{brick_final_dir}}"
-    rebalance: yes
-    cluster: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
-  run_once: true
+# - name: Generate Bricks argument
+#   set_fact:
+#     bricks: "{{generated_bricks + }}"
+#   loop:
+#     brick_list
+
+## Old
+  # brick_list: "{{brick_list + [brick_number]}}"
+
+
+- name: Number of bricks
+  set_fact:
+    brick_list: "{{brick_list + export[brick_number]}}"
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+
+
+- debug:
+    msg: "Bricks.... {{brick_list}}"
+
+# bricks: "{{export}}{{brick_number}}/{{ btrfs_main_volume }}/{{brick_final_dir}}"
