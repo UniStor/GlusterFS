@@ -1,0 +1,20 @@
+---
+
+- include_tasks: directory/btrfs subvol
+
+
+- name: Generate Bricks list Join
+  set_fact:
+    generated_bricks: "{{ generated_bricks + [(export, brick_number, '/', btrfs_main_volume, '/', brick_final_dir) | join] }}"
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+
+
+# - name: Merge bricks into one string
+#   set_fact:
+#     brick_string: "{{ generated_bricks | join(' ')}}"
+#
+# - name: Bricks String
+#   debug:
+#     msg: "Bricks.... {{ generated_bricks }} from {{ brick_string }}"
