@@ -1,0 +1,13 @@
+---
+
+- name: Autologin LxQt
+  become: yes
+  ansible.builtin.blockinfile:
+    path: /etc/sddm.conf.d/autologin
+    create: yes
+    block: |
+      [Autologin]
+      User=me
+      Session=lxqt.desktop
+      Relogin=
+  notify: Reboot the machine

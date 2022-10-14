@@ -1,0 +1,8 @@
+---
+- name: Install Repair tools
+  become: yes
+  ansible.builtin.dnf:
+    name:
+      - gnome-disk-utility
+      - gparted
+    state: latest

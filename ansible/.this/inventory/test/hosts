@@ -14,9 +14,16 @@ ansible_user=me
 ansible_become_password=u
 
 #
+[Repair]
+192.168.122.207 new_hostname=gluster2
 
+[Repair:vars]
+ansible_user=me
+ansible_become_password=u
+
+
+#
 [storage]
-192.168.122.188 new_hostname=gluster2
 192.168.122.101 new_hostname=gluster3
 
 [storage:vars]
@@ -27,6 +34,7 @@ ansible_become_password=u
 [cluster:children]
 master
 storage
+Repair
 
 
 [client:children]
