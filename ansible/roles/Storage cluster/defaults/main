@@ -5,7 +5,8 @@ brick_type: "partition"
 
 filesystem: "btrfs"
 
-mount_home: /var
-mount_name: gluster
+storage_pool: gluster
 
-bind_mount: "{{mount_home}}/{{mount_name}}/brick"
+export: "/export/{{storage_pool}}"
+
+bind_mount: "{{export}}/brick"

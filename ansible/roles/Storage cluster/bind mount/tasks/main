@@ -4,7 +4,7 @@
   become: yes
   ansible.posix.mount:
     path: "{{bind_mount}}{{brick_number}}"
-    src: "{{mount_home}}/{{mount_name}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
+    src: "{{export}}/{{ ansible_device_links.uuids[ item ] | join(',') }}"
     opts: bind
     state: mounted
     fstype: none

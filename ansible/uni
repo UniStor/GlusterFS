@@ -1,20 +1,18 @@
 ---
 # This library is designed so that each step is Independent & idempotent. Enabling Reuse in other Gluster configuration!
-#
-# FIX: Have one problem with Firewall not being idempotent? Fix that!
 
 - hosts: nodes
   gather_facts: true
-#   vars:
-#     use_lvm: false
-#     filesystem: "btrfs"
-#     use_dns: false
-#
-#   roles:
-#   - cluster
-#   - Gluster/install
-#   - Storage cluster
-#   - Volume/directory
+  vars:
+    use_lvm: false
+    filesystem: "btrfs"
+    use_dns: false
+
+  roles:
+  - cluster
+  - Gluster/install
+  - Storage cluster
+  - Volume/directory
 
 
 - hosts: single
