@@ -2,6 +2,9 @@
 - name: Setup Storage Cluster
   import_playbook: play/cluster
 
+- name: Format Block devices
+  import_playbook: play/format
+
 - name: Create Volume
   import_playbook: play/volume
 
