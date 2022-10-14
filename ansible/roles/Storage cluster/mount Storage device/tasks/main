@@ -9,19 +9,3 @@
     opts: noatime
     state: mounted
   loop: "{{ storage_partition }}"
-
-
-# To Do: wait until gluster fully started, then run `sudo mount -a`
-- name: Mount On Boot - To Do:
-  debug:
-    msg: "Todo: Use service module!"
-# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html
-
-
-- name: Copy startup file - Temporary workaround
-  ansible.builtin.copy:
-    src: mount-on-boot.sh
-    dest: "/home/{{ansible_user}}/bin/"
-    owner: "{{ansible_user}}"
-    group: "{{ansible_user}}"
-    mode: '0744'

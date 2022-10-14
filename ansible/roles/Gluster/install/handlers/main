@@ -5,3 +5,16 @@
   ansible.builtin.iptables:
     chain: "INPUT"
     flush: yes
+
+- name: restart firewalld
+  become: true
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: firewalld
+
+- name: make firewall idempotent
+  become: true
+  ansible.builtin.file:
+    path: /etc/glusterfs/firewall-set
+    state: touch

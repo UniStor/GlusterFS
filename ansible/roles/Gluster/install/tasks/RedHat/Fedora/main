@@ -31,7 +31,9 @@
     chain_management: yes
     # comment: accept all traffic from the other node
   loop: "{{ other_nodes }}"
-  notify: flush iptables INPUT
+  notify:
+    - flush iptables INPUT
+    - make firewall idempotent
 
 # Fixes:
 - name: Firewalld allow gluster
@@ -40,4 +42,6 @@
     service: glusterfs
     permanent: yes
     state: enabled
+  notify:
+    - restart firewalld
 # https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted

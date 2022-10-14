@@ -3,11 +3,10 @@
 - name: Get all nodes
   set_fact:
     all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) }}"  # List
-    # all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | join(',') }}" # String
+
 
 - debug:
     msg: "List: {{ all_nodes }} of type: {{ all_nodes | type_debug }}"
-
 
 
 - name: Create a trusted storage pool
