@@ -1,12 +1,9 @@
 ---
 
+# DNS: use Hostnames instaed of IPs!
 - name: Get all nodes
   set_fact:
-    all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) }}"  # List
-
-
-- debug:
-    msg: "List: {{ all_nodes }} of type: {{ all_nodes | type_debug }}"
+    all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
 
 
 - name: Create a trusted storage pool
@@ -14,6 +11,7 @@
   gluster.gluster.gluster_peer:
     state: present
     nodes: "{{ all_nodes }}"
+
 
 # Todo! use cluster template
 # https://github.com/Source-Graph/Ansible.Cluster.example

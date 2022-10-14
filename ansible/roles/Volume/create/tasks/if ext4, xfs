@@ -7,5 +7,6 @@
     name: "{{volume_name}}"
     bricks: "{{ bind_mount }}{{ brick_number }}/{{ volume_name }}"
     rebalance: yes
-    cluster: "{{ groups['nodes'] }}"
+    cluster: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
+    # using Hostnames
   run_once: true

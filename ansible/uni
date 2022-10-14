@@ -5,16 +5,16 @@
 
 - hosts: nodes
   gather_facts: true
-  vars:
-    use_lvm: false
-    filesystem: "btrfs"
-    use_dns: false
-
-  roles:
-  - cluster
-  - Gluster/install
-  - Storage cluster
-  - Volume/directory
+#   vars:
+#     use_lvm: false
+#     filesystem: "btrfs"
+#     use_dns: false
+#
+#   roles:
+#   - cluster
+#   - Gluster/install
+#   - Storage cluster
+#   - Volume/directory
 
 
 - hosts: single
@@ -22,6 +22,6 @@
   - Gluster/peer
   - Volume/create
 
-- hosts: client
-  roles:
-  - client/mount
+# - hosts: client
+#   roles:
+#   - client/mount
