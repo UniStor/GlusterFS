@@ -2,7 +2,7 @@
 - name: Make a block of ips & hostnames
   set_fact:
     hosts_block: "{{hosts_block + hostvars[item].ansible_default_ipv4.address + '   ' + hostvars[item].ansible_hostname + '\n'}}"
-  with_items: "{{ groups['nodes'] }}"
+  with_items: "{{ groups['cluster'] }}"
 
 - name: Add mappings to /etc/hosts
   become: true

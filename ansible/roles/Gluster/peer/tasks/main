@@ -1,16 +1,16 @@
 ---
 
 # DNS: use Hostnames instaed of IPs!
-- name: Get all nodes
+- name: Get all storage nodes
   set_fact:
-    all_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
+    all_storage_nodes: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }}"
 
 
 - name: Create a trusted storage pool
   become: yes
   gluster.gluster.gluster_peer:
     state: present
-    nodes: "{{ all_nodes }}"
+    nodes: "{{ all_storage_nodes }}"
 
 
 # Todo! use cluster template

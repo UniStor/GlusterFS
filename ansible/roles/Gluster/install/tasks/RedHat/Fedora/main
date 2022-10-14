@@ -17,7 +17,7 @@
 
 - name: Get other Node IPs
   set_fact:
-    other_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
+    other_nodes: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
 
 
 - name: Make firewall Idempotent - workaround
