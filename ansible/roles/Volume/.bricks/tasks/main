@@ -1,0 +1,18 @@
+---
+
+- name: Number of bricks
+  set_fact:
+    brick_list: "{{brick_list + [brick_number]}}"
+  loop: "{{ storage_partition }}"
+  loop_control:
+    index_var: brick_number
+
+
+# - name: Print...............
+#   debug:
+#     msg: "Bricks: {{brick_list}}"
+#
+#
+# - name: Map to transform Brick list
+#   debug:
+#     msg: "{{ brick_list | map('extract', [0]) }}"

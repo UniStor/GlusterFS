@@ -1,10 +1,3 @@
 ---
 
-- include_tasks: if btrfs
-  when: filesystem == "btrfs"
-
-- include_tasks: if btrfs
-  when: filesystem == "xfs"
-
-- include_tasks: if zfs
-  when: filesystem == "zfs"
+- include_tasks: "if {{filesystem}}"

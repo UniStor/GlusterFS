@@ -6,19 +6,22 @@
   vars:
     use_lvm: false
     filesystem: "btrfs"
-    use_dns: false
 
   roles:
   # - cluster
   # - Gluster/install
   # - Storage cluster
-  - Volume/directory
+  # - Volume/directory
 
+
+## Todo: Top and bottom `vars: filesystem` has to Match! This is a problem with Global Variables at the moment.
 
 - hosts: single
+  vars:
+    filesystem: "btrfs"
   roles:
   # - Gluster/peer
-  # - Volume/create/simple volume
+  - Volume/create/simple volume
 
 # - hosts: client
 #   roles:
