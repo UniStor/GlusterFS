@@ -20,7 +20,7 @@
 - hosts: single
   roles:
   - Gluster/peer
-  - Volume/create
+  - Volume/create/simple volume
 
 # - hosts: client
 #   roles:
