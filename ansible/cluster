@@ -11,3 +11,4 @@
   - cluster
   - Gluster/install
   - Storage cluster
+  - Volume/.brick_generator
