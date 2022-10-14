@@ -1,0 +1,13 @@
+---
+
+# using DNS Hostnames instead of ip addresses
+
+- name: create gluster volume
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: present
+    name: "{{volume_name}}"
+    disperses: "{{dispersed['default_count']}}"
+    bricks: "{{brick_string}}"
+    cluster: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }}"
+  run_once: true

@@ -1,4 +1,3 @@
 ---
 
-- include_tasks: simple volume
-  when: not dispersed
+- include_tasks: "{{volume_type}}"

@@ -1,5 +1,8 @@
 ---
 
-dispersed: false
+volume_type: dispersed
 
-replicas: 2
+# volume_type: simple volume
+# volume_type: try
+
+distribute_replicas: 2

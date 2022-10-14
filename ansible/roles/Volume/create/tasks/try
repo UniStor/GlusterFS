@@ -1,0 +1,7 @@
+---
+
+- debug:
+    msg: "Hello Dispersed!"
+
+- debug:
+    msg: "Dispersed {{disperse['default_count']}}"

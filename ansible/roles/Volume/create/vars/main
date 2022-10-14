@@ -1,0 +1,12 @@
+---
+
+
+dispersed:
+  type_name: "dispersed"
+  count: 3
+  default_count: "{{ groups['cluster'] | length }}"
+
+
+distribute:
+  type_name: distribute
+  replicas: "{{distribute_replicas}}"
