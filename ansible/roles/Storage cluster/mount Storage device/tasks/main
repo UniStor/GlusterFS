@@ -1,11 +1,5 @@
 ---
 
-- name: update facts to get new filesystems
-  setup:
-
-- include_role:
-    name: "{{playbook_dir}}/roles/Storage cluster/get"
-
 - name: Mount in FStab by UUID
   become: true
   ansible.posix.mount:

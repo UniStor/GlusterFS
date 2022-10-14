@@ -1,8 +1,9 @@
 ---
 dependencies:
-- Setup storage cluster/get Empty Storage device
-- Setup storage cluster/format device
-- Setup storage cluster/mount Storage device
+- Storage cluster/get Empty Storage device
+- Storage cluster/format device
+- Storage cluster/mount Storage device
+- Storage cluster/bind mount
 
 ### Works for a Single empty storage device per node!
 # Fix it to work with Any number of devices.

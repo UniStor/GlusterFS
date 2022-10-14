@@ -1,8 +1,5 @@
 ---
 
-- include_role:
-    name: "{{playbook_dir}}/roles/Storage cluster/get"
-
 - name: Bind Mount in FStab from UUID
   become: yes
   ansible.posix.mount:

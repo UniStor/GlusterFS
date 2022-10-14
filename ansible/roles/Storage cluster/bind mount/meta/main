@@ -1,0 +1,3 @@
+---
+dependencies:
+- Storage cluster/get

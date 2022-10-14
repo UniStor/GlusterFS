@@ -12,7 +12,3 @@
   # Reduce output
   loop_control:
     label: "{{ item.key }}"
-
-- name: Print all Empty storage
-  debug:
-    var: empty_drive
