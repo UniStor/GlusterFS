@@ -7,7 +7,7 @@
   gluster.gluster.gluster_volume:
     state: present
     name: "{{volume_name}}"
-    bricks: "{{ generated_bricks | join(',')}}"
+    bricks: "{{brick_string}}"
     rebalance: yes
     cluster: "{{ groups['cluster'] | map('extract', hostvars, ['ansible_hostname']) }}"
   run_once: true

@@ -14,10 +14,3 @@
 - name: Merge bricks into one string for `gluster volume create`
   set_fact:
     brick_string: "{{ generated_bricks | join(',')}}"
-
-# - name: Bricks String
-#   debug:
-#     msg: "Bricks.... {{ generated_bricks }} from {{ brick_string }}"
-
-# - debug:
-#     msg: "{{ generated_bricks | join(',')}}"
