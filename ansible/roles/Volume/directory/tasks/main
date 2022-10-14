@@ -1,8 +1,4 @@
 ---
-- include_vars:
-    file: "{{playbook_dir}}/roles/Volume/create/vars/main"
-
-
 
 - include_tasks: if btrfs
   when: filesystem == "btrfs"
