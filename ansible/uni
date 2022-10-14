@@ -1,24 +1,27 @@
 ---
 - hosts: nodes
-  vars:
-    use_lvm: false
-    filesystem: "btrfs"
-    use_dns: false
+  gather_facts: true
+#   vars:
+#     use_lvm: false
+#     filesystem: "btrfs"
+#     use_dns: false
+#
+#   roles:
+#   - cluster
+#   - Gluster/install
+#   - Storage cluster
+#   - Storage cluster/bind mount
+#   - Volume/directory
 
-  roles:
-  - cluster
-  - Gluster/install
-  - Storage cluster
-  - Storage cluster/bind mount
 
 # Problem: Works for a Single empty storage device per node!
 ## Fix it to work with Any number of devices.
 
-- hosts: nodes
-  roles:
-  - Volume/directory
+# - hosts: single
+#   roles:
+#   - Gluster/peer
+#   - Volume/create
 
-- hosts: single
+- hosts: client
   roles:
-  - Gluster/peer
-  - Volume/create
+  - client/mount

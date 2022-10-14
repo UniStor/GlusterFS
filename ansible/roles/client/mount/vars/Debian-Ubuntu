@@ -1,0 +1,4 @@
+---
+
+# Ubuntu
+mount_dir: "/media/{{ansible_user}}"

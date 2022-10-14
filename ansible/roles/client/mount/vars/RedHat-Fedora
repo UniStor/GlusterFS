@@ -1,0 +1,4 @@
+---
+
+# Fedora, Red Hat
+mount_dir: "/run/media/{{ansible_user}}"

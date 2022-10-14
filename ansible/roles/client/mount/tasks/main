@@ -1,0 +1,19 @@
+---
+- name: Get default volume_name & Set mount_dir by Distribution
+  include_vars:
+    file: "{{item}}"
+  loop:
+    - "{{playbook_dir}}/roles/Volume/create/defaults/main"
+    - "{{role_path}}/vars/{{ ansible_os_family }}-{{ ansible_distribution }}"
+
+
+- name: Mount an NFS volume
+  become: yes
+  ansible.posix.mount:
+    src: "{{ hostvars[groups['nodes'][0]]['ansible_hostname'] }}:/{{volume_name}}"
+    path: "{{mount_dir}}/{{volume_name}}"
+    state: mounted
+    fstype: glusterfs
+
+- debug:
+    msg: "{{mount_dir}}/{{volume_name}}"

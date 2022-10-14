@@ -24,3 +24,7 @@ test
 [single:vars]
 ansible_user=me
 ansible_become_password=u
+
+
+[client:children]
+single
