@@ -20,6 +20,12 @@
     other_nodes: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
 
 
+- name: Make firewall Idempotent - workaround
+  stat:
+    path: /etc/glusterfs/firewall-set
+  register: firewall_set
+
+
 - name: Step 4 - Configure the firewall
   become: true
   ansible.builtin.iptables:
@@ -27,13 +33,11 @@
     source: "{{item}}"
     protocol: all
     jump: ACCEPT
-    # make idempotent:
-    chain_management: yes
-    # comment: accept all traffic from the other node
+    comment: accept all traffic from gluster nodes
   loop: "{{ other_nodes }}"
   notify:
     - flush iptables INPUT
-    - make firewall idempotent
+  when: not firewall_set.stat.exists is defined
 
 # Fixes:
 - name: Firewalld allow gluster
@@ -44,4 +48,7 @@
     state: enabled
   notify:
     - restart firewalld
+    - make firewall idempotent
+  when: not firewall_set.stat.exists is defined
+
 # https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted
