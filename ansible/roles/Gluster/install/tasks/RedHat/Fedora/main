@@ -37,9 +37,9 @@
   loop: "{{ other_nodes }}"
   notify:
     - flush iptables INPUT
-  when: not firewall_set.stat.exists is defined
+  when: (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
 
-# Fixes:
+
 - name: Firewalld allow gluster
   become: true
   ansible.posix.firewalld:
@@ -49,6 +49,11 @@
   notify:
     - restart firewalld
     - make firewall idempotent
-  when: not firewall_set.stat.exists is defined
+  when: (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
 
+# Fixes:
 # https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted
+
+
+- name: Force notified handlers to run
+  ansible.builtin.meta: flush_handlers
