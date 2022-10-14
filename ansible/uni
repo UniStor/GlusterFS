@@ -1,28 +1,9 @@
 ---
-# This library is designed so that each step is Independent & idempotent. Enabling Reuse in other Gluster configuration!
+- name: Setup Storage Cluster
+  import_playbook: cluster
 
-- hosts: nodes
-  gather_facts: true
-  vars:
-    use_lvm: false
-    filesystem: "btrfs"
+- name: Create Volume
+  import_playbook: master
 
-  roles:
-  # - cluster
-  # - Gluster/install
-  # - Storage cluster
-  # - Volume/directory
-
-
-## Todo: Top and bottom `vars: filesystem` has to Match! This is a problem with Global Variables at the moment.
-
-- hosts: single
-  vars:
-    filesystem: "btrfs"
-  roles:
-  # - Gluster/peer
-  - Volume/create/simple volume
-
-# - hosts: client
-#   roles:
-#   - client/mount
+- name: Connect from OS
+  import_playbook: client

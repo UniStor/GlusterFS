@@ -1,0 +1,15 @@
+---
+# Works: https://stackoverflow.com/a/33903682
+- hosts: localhost
+  tasks:
+    - command: /bin/echo "this is a test"
+      register: foo
+
+
+- hosts: master
+  tasks:
+    - debug: var=foo
+      when: foo is defined
+
+    - debug: var=hostvars['localhost']['foo']
+      when: hostvars['localhost']['foo'] is defined

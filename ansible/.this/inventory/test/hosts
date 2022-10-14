@@ -6,25 +6,28 @@ ansible_connection=local
 ansible_user=me
 ansible_become_password=u
 
-[test]
+[master]
 192.168.122.222 new_hostname=gluster1
+
+[master:vars]
+ansible_user=me
+ansible_become_password=u
+
+#
+
+[storage]
 192.168.122.188 new_hostname=gluster2
 192.168.122.101 new_hostname=gluster3
 
-[test:vars]
+[storage:vars]
 ansible_user=me
 ansible_become_password=u
 
-[nodes:children]
-test
 
-[single]
-192.168.122.222
-
-[single:vars]
-ansible_user=me
-ansible_become_password=u
+[cluster:children]
+master
+storage
 
 
 [client:children]
-single
+local
