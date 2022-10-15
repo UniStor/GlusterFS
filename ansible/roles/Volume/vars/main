@@ -13,6 +13,7 @@ distribute:
 
 btrfs_main_volume: "current"
 
+brick_final_dir: "export"
 brick_final_dir: "brick"
 
 generated_bricks: []
