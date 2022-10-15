@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+. inv/list
+. func/is_shutdown
+
+snap_name=$1
+
+snapshot(){
+  for vm in ${allvms[@]}
+  do
+    sudo virsh snapshot-create-as --domain $vm --name "$1"
+  done
+}
+
+. shutdown
+is_shutdown
+snapshot $snap_name
+. start

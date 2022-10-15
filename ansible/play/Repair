@@ -1,20 +1,20 @@
 ---
-# - name: optional Repair GUI Tools
-#   hosts: Repair
+# - name: optional Repair Tools & GUI
+#   hosts: Repair:master
 #   gather_facts: true
 #   roles:
 #   - Repair/autologin
 #   - Repair/tools
 
-# - import_playbook: Install_Gluster
-#   vars:
-#     firewall_reset: true  # Required for peers to get New Node!
+- import_playbook: play/Install_Gluster
+  vars:
+    firewall_reset: true  # Required for peers to get New Node!
 
 # - import_playbook: Format_Empty_Drives
 
 
-- name: Repair Volume
-  hosts: master
-  roles:
-  - Repair/Replace peer
+# - name: Repair Volume
+#   hosts: master
+#   roles:
+#   - Repair/Replace peer
 #   - Repair/Replace brick

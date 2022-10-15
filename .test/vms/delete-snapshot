@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+. inv/list
+
+for vm in ${allvms[@]}
+do
+  sudo virsh snapshot-delete --domain $vm --snapshotname "$1"
+done

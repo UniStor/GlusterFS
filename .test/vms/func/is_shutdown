@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+is_shutdown(){
+  for vm in ${allvms[@]}
+  do
+    state=$(sudo virsh domstate $vm)
+
+    while [ "$state" != "shut off" ]
+    do
+      sleep 0.5
+      state=$(sudo virsh domstate $vm)
+    done
+    echo "$vm is shutdown!"
+  done
+}

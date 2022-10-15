@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+. inv/list
+
+shutdown(){
+  for vm in ${allvms[@]}
+  do
+    state=$(sudo virsh domstate $vm)
+
+    if [ "$state" != "shut off" ]; then
+      sudo virsh shutdown $vm
+    fi
+  done
+}
+
+shutdown

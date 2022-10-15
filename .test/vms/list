@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+. inv/list
+
+list_snapshot(){
+  for vm in ${allvms}
+  do
+    sudo virsh snapshot-list $vm
+  done
+}
+
+list_snapshot

@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+. inv/list
+
+for vm in ${allvms[@]}
+do
+  sudo virsh snapshot-revert $vm "$1"
+done
+
+. start
