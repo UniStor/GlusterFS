@@ -1,0 +1,4 @@
+---
+
+export_config_file: export.conf
+export_config_path: /etc/nfs

@@ -1,0 +1,18 @@
+---
+# https://docs.gluster.org/en/latest/Administrator-Guide/NFS-Ganesha-GlusterFS-Integration/
+
+- name: Template export configuration file
+  become: true
+  ansible.builtin.template:
+    src: export.conf.j2
+    dest: "/etc/TODO/{{export_config_file}}"
+    owner: root
+    group: root
+    mode: '0644'
+
+
+- name: Ensure SELinux is set to enforcing mode
+  ansible.builtin.lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: "%include {{export_config_file}}"

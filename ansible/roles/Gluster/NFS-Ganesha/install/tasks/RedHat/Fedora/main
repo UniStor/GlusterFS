@@ -1,0 +1,17 @@
+---
+
+- name: Install NFS-Ganesha
+  ansible.builtin.dnf:
+    name:
+      - glusterfs-server
+      - glusterfs-api
+      - glusterfs-ganesha
+    state: latest
+  become: true
+
+- name: Enable & Start NFS-Ganesha
+  ansible.builtin.systemd:
+    name: nfs-ganesha
+    enabled: yes
+    state: started
+  become: true
