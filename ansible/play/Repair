@@ -4,3 +4,19 @@
   roles:
   - Repair/autologin
   - Repair/tools
+
+- hosts: cluster
+  gather_facts: true
+  vars:
+    firewall_reset: true  # Required for peers to get New Node!
+    lvm: false
+    filesystem: "btrfs"
+  roles:
+  - cluster
+  - Gluster/install
+  - Format Block device
+
+- hosts: master
+  roles:
+  - Repair/Replace peer
+  # - Repair/Replace brick

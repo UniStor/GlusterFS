@@ -8,3 +8,4 @@
   roles:
   - cluster
   - Gluster/install
+  - Gluster/Firewall

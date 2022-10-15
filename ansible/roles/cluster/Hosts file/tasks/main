@@ -1,4 +1,6 @@
 ---
+# ToDo: Convert this to use Map & join instead!
+# Much faster will run only once per host. Instead of 3 times per host
 - name: Make a block of ips & hostnames
   set_fact:
     hosts_block: "{{hosts_block + hostvars[item].ansible_default_ipv4.address + '   ' + hostvars[item].ansible_hostname + '\n'}}"
