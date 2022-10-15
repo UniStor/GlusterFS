@@ -22,9 +22,10 @@
 - name: Repair Volume
   hosts: master
   roles:
-  - Repair/Replace peer
+  - Repair/Add new peer
   - Repair/Add new brick
   - Repair/Remove lost brick
+  - Repair/Remove lost peer
   - Repair/Rebalance
 
 # Alt
