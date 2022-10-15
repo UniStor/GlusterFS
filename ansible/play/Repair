@@ -10,11 +10,11 @@
 #   vars:
 #     firewall_reset: true  # Required for peers to get New Node!
 
-- import_playbook: Format_Empty_Drives
+# - import_playbook: Format_Empty_Drives
 
 
-# - name: Repair Volume
-#   hosts: master
-#   roles:
-#   - Repair/Replace peer
+- name: Repair Volume
+  hosts: master
+  roles:
+  - Repair/Replace peer
 #   - Repair/Replace brick
