@@ -1,6 +1,0 @@
----
-dependencies:
-# - Volume
-- Volume/.brick_generator
-
-# Causes Duplication of bricks!

@@ -2,8 +2,8 @@
 volume_name: 'simple_gluster'
 
 volume_type: dispersed
-
 # volume_type: simple volume
 # volume_type: try
 
 distribute_replicas: 2
+dispere_count: 3

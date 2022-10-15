@@ -1,4 +1,16 @@
 ---
+dispersed:
+  type_name: "dispersed"
+  count: "{{dispere_count}}"
+  default_count: "{{ groups['cluster'] | length }}"
+
+
+distribute:
+  type_name: distribute
+  replicas: "{{distribute_replicas}}"
+
+
+
 btrfs_main_volume: "current"
 
 brick_final_dir: "brick"

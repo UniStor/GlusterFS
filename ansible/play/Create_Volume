@@ -8,5 +8,5 @@
 - hosts: master
   vars:   # Todo: Make vars persist between Plays. Solution: https://stackoverflow.com/questions/33896847/how-do-i-set-register-a-variable-to-persist-between-plays-in-ansible
   roles:
-  # - Gluster/peer
-  # - Volume/create
+  - Gluster/peer
+  - Volume/Create Gluster Volume
