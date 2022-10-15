@@ -6,7 +6,9 @@ sch: https://www.google.com/search?q=cluster.disperse-self-heal-daemon
 # Discuss
 https://github.com/gluster/glusterfs/issues/3047
 
-# Blog
+# Guide
+## Gluster Disperse Volume Troubleshooting – HEAL
+keep!:
 https://ashishpandeyblogs.home.blog/2019/07/03/gluster-disperse-volume-troubleshooting-heal/
 
 # Commands:
