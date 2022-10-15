@@ -1,1 +1,5 @@
 ---
+# https://access.redhat.com/documentation/it-it/red_hat_hyperconverged_infrastructure_for_virtualization/1.0/html/maintaining_red_hat_hyperconverged_infrastructure/replacing_gluster_storage_node
+
+## Stop any Geo-Replication:
+# gluster volume geo-replication MASTER_VOL SLAVE_HOST::SLAVE_VOL stop

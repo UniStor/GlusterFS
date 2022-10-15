@@ -1,0 +1,5 @@
+---
+# 
+# - name: Remove brick
+#   become: yes
+#   command: "gluster volume remove-brick {{volume_name}} gluster2:/data/glusterfs/simple_gluster/brick0/current/brick start"
