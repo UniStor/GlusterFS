@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 . inv/list
 
-shutdown(){
+shutdown_vm(){
   for vm in ${allvms[@]}
   do
     state=$(sudo virsh domstate $vm)
@@ -12,4 +12,4 @@ shutdown(){
   done
 }
 
-shutdown
+shutdown_vm

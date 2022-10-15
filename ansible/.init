@@ -1,2 +1,0 @@
-ln -srf play/Install_Gluster ./.Install_Gluster
-ln -srf play/Format_Empty_Drives ./.Format_Empty_Drives

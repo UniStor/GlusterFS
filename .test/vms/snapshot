@@ -11,7 +11,7 @@ snapshot(){
   done
 }
 
-. shutdown
+. shutdown-vm
 is_shutdown
 snapshot $snap_name
 . start
