@@ -6,4 +6,5 @@
     lvm: false
     filesystem: "btrfs"
   roles:
+  - Storage cluster
   - format Block devices

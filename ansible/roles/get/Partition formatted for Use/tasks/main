@@ -1,5 +1,5 @@
 ---
-# iterate over partitions, and keeep if label matches `fs_label_prefix` i.e. "gluster."
+# iterate over partitions, and keep if label matches `fs_label_prefix` i.e. "gluster."
 
 - name: Clear from previous play
   set_fact:

@@ -1,6 +1,8 @@
 ---
 dependencies:
 - Volume  # get vars like `volume_name`
-- format Block devices/mount Storage device
+- Storage cluster
+- format Block devices/format device
+- format Block devices/mount device
 
 # Try moving this out to another play!

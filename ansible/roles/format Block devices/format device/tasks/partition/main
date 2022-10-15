@@ -24,6 +24,3 @@
     dev: "/dev/{{ item }}1"
     opts: "-L {{ fs_label_prefix }}"
   loop: "{{ empty_drive }}"
-
-
-# - include_tasks: rename filesystem

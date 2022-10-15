@@ -1,3 +1,5 @@
+You may have to run on a clean disk? use `wipefs -af /dev/sdXY` before running
+
 # Problem: Works for a Single empty storage device per node!
 Fix it to work with Any number of devices.
 
