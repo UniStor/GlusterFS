@@ -1,0 +1,9 @@
+---
+- name: Get facts on Cluster, so Client can connect by hostname!
+  hosts: cluster
+  gather_facts: true
+
+- name: Mount volume on Client
+  hosts: client
+  roles:
+  - client/mount

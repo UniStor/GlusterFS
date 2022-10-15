@@ -1,23 +1,21 @@
 ---
-# - hosts: Repair
+# - name: optional Repair GUI Tools
+#   hosts: Repair
 #   gather_facts: true
 #   roles:
 #   - Repair/autologin
 #   - Repair/tools
 
-- hosts: cluster
-  gather_facts: true
-  vars:
-    firewall_reset: true  # Required for peers to get New Node!
-    lvm: false
-    filesystem: "btrfs"
-  roles:
-  # - cluster
-  - Gluster/install
-  - Gluster/Firewall
-  # - Format Block device
-#
-# - hosts: master
+# - import_playbook: Install Gluster
+#   vars:
+#     firewall_reset: true  # Required for peers to get New Node!
+
+
+- import_playbook: Format Empty Drives
+
+
+# - name: Repair Volume
+#   hosts: master
 #   roles:
 #   - Repair/Replace peer
-  # - Repair/Replace brick
+#   - Repair/Replace brick

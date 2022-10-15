@@ -1,0 +1,10 @@
+---
+
+- name: Install Gluster
+  hosts: cluster
+  gather_facts: true
+  vars:
+  roles:
+  - cluster
+  - Gluster/install
+  - Gluster/Firewall

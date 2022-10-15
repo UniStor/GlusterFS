@@ -1,11 +1,10 @@
 ---
 
-- hosts: cluster
+- name: Format Empty Drives
+  hosts: cluster
   gather_facts: true
   vars:
     lvm: false
     filesystem: "btrfs"
   roles:
-  - cluster
-  - Gluster/install
-  - Gluster/Firewall
+  - Format Block device

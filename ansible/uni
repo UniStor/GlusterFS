@@ -2,14 +2,10 @@
 # This library is designed so that each step is Independent & idempotent. Enabling Reuse in other Gluster configuration!
 # Todo: Make vars persist between Plays. Solution: https://stackoverflow.com/questions/33896847/how-do-i-set-register-a-variable-to-persist-between-plays-in-ansible
 
-- name: Setup Storage Cluster
-  import_playbook: play/cluster
+- import_playbook: play/Install Gluster
 
-- name: Format Block devices
-  import_playbook: play/format
+- import_playbook: play/Format Empty Drives
 
-- name: Create Volume
-  import_playbook: play/volume
+- import_playbook: play/Create Volume
 
-- name: Connect from OS
-  import_playbook: playclient
+- import_playbook: play/Mount on Client

@@ -1,9 +1,0 @@
----
-
-- hosts: cluster
-  gather_facts: true
-  vars:
-    lvm: false
-    filesystem: "btrfs"
-  roles:
-  - Format Block device
