@@ -13,14 +13,15 @@
 # - import_playbook: play/Format_Empty_Drives
 
 
-- name: Create Replacement brick
-  hosts: Repair
-  roles:
-  - Volume/func/brick_generator
-  - Volume/func/brick_path
-
-# - name: Repair Volume
-#   hosts: master
+# - name: Create Replacement brick
+#   hosts: Repair
 #   roles:
-#   - Repair/Replace peer
+#   - Volume/func/brick_generator
+#   - Volume/func/brick_path
+
+- name: Repair Volume
+  hosts: master
+  roles:
+  - Repair/Remove brick
+  # - Repair/Replace peer
 #   - Repair/Replace brick

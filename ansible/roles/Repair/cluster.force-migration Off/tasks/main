@@ -1,0 +1,15 @@
+---
+# https://docs.gluster.org/en/main/release-notes/4.0.0/#7-rebalance-skips-migration-of-file-if-it-detects-writes-from-application
+
+# - name: Alt - Turn off cluster.force-migration
+#   become: yes
+#   command: "gluster volume set {{volume_name}} cluster.force-migration off"
+
+
+- name: Turn off cluster.force-migration
+  become: yes
+  gluster.gluster.gluster_volume:
+    state: present
+    name: "{{volume_name}}"
+    options:
+      cluster.force-migration: 'off'
