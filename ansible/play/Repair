@@ -6,12 +6,12 @@
 #   - Repair/autologin
 #   - Repair/tools
 
-# - import_playbook: Install Gluster
+# - import_playbook: Install_Gluster
 #   vars:
 #     firewall_reset: true  # Required for peers to get New Node!
 
 
-- import_playbook: Format Empty Drives
+- import_playbook: Format_Empty_Drives
 
 
 # - name: Repair Volume
