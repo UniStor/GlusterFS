@@ -10,7 +10,6 @@
 #   vars:
 #     firewall_reset: true  # Required for peers to get New Node!
 
-
 - import_playbook: Format_Empty_Drives
 
 
