@@ -13,6 +13,3 @@
     storage_partition: "{{ storage_partition + [item.key] }}"
   loop: "{{ lookup('dict', ansible_device_links.labels) }}"
   when: fs_label_prefix in item.value
-
-# - debug:
-#     msg: "Running once....................... {{storage_partition}}"

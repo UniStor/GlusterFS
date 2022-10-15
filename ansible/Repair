@@ -6,12 +6,18 @@
 #   - Repair/autologin
 #   - Repair/tools
 
-- import_playbook: play/Install_Gluster
-  vars:
-    firewall_reset: true  # Required for peers to get New Node!
+# - import_playbook: play/Install_Gluster
+#   vars:
+#     firewall_reset: true  # Required for peers to get New Node!
+#
+# - import_playbook: play/Format_Empty_Drives
 
-- import_playbook: play/Format_Empty_Drives
 
+- name: Create Replacement brick
+  hosts: Repair
+  roles:
+  - Volume/func/brick_generator
+  - Volume/func/brick_path
 
 # - name: Repair Volume
 #   hosts: master

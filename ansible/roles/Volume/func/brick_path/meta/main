@@ -1,4 +1,4 @@
 ---
 dependencies:
-- Storage cluster/get
+- get/Partition formatted for Use
 - Volume

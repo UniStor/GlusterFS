@@ -1,4 +1,0 @@
----
-
-# Overwrite only if Btrfs or ZFS
-subvolume: ""
