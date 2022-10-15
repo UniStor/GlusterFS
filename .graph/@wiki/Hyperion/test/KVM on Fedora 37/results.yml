@@ -1,0 +1,31 @@
+result: Failed
+
+problem:
+- system Instability
+- host program crashes
+- system Freezing
+- rsync failing
+
+test:
+- host:
+    hypervisor: KVM
+    os:
+    cpu:
+      cores: 4
+      model: Intel Core i5-6400
+
+- gluster:
+    nodes: 3
+    bricks: 3
+    brick-size: 50G
+
+- hypervisor:
+    vm:
+      instances: 3
+
+- vm:
+    storage:
+      type: qcow2
+      size: 50G
+    bricks-per-node: 1
+    vpu-per-node: 1
