@@ -1,9 +1,9 @@
 ---
-- hosts: Repair
-  gather_facts: true
-  roles:
-  - Repair/autologin
-  - Repair/tools
+# - hosts: Repair
+#   gather_facts: true
+#   roles:
+#   - Repair/autologin
+#   - Repair/tools
 
 - hosts: cluster
   gather_facts: true
@@ -12,11 +12,12 @@
     lvm: false
     filesystem: "btrfs"
   roles:
-  - cluster
+  # - cluster
   - Gluster/install
-  - Format Block device
-
-- hosts: master
-  roles:
-  - Repair/Replace peer
+  - Gluster/Firewall
+  # - Format Block device
+#
+# - hosts: master
+#   roles:
+#   - Repair/Replace peer
   # - Repair/Replace brick

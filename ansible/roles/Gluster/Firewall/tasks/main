@@ -23,7 +23,7 @@
   loop: "{{ other_nodes }}"
   notify:
     - flush iptables INPUT
-  when: (not firewall_reset) and (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
+  when: (firewall_reset) or (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
 
 
 - name: Firewalld allow gluster
@@ -35,7 +35,7 @@
   notify:
     - restart firewalld
     - make firewall idempotent
-  when: (not firewall_reset) and (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
+  when: (firewall_reset) or (firewall_set.stat.exists is defined) and not firewall_set.stat.exists
 
 # Fixes:
 # https://serverfault.com/questions/919112/peer-probe-failed-probe-returned-with-transport-endpoint-is-not-connacted
