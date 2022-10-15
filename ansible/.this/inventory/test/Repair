@@ -15,7 +15,7 @@ ansible_become_password=u
 
 #
 [Repair]
-192.168.122.207 new_hostname=gluster4
+192.168.122.207 new_hostname=gluster-repair2
 
 [Repair:vars]
 ansible_user=me

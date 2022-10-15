@@ -1,1 +1,4 @@
 ---
+
+- debug:
+    msg: "New brick........... {{brick_string}}"

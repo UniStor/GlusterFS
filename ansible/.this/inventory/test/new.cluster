@@ -14,16 +14,10 @@ ansible_user=me
 ansible_become_password=u
 
 #
-[Repair]
-192.168.122.207 new_hostname=gluster4
-
-[Repair:vars]
-ansible_user=me
-ansible_become_password=u
-
 
 #
 [storage]
+192.168.122.207 new_hostname=gluster2
 192.168.122.101 new_hostname=gluster3
 
 [storage:vars]

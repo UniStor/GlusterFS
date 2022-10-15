@@ -1,0 +1,17 @@
+---
+- name: Replacement Nodes & Bricks
+  hosts: Repair
+  gather_facts: true
+#   roles:
+#   - Volume/func/brick_generator
+#   - Volume/func/brick_path
+
+
+- name: Repair Volume
+  hosts: master
+  roles:
+  # - Repair/Add new peer
+  - Repair/Add new brick
+  # - Repair/Remove lost brick
+  # - Repair/Remove lost peer
+  # - Repair/Rebalance
