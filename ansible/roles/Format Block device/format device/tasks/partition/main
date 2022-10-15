@@ -6,6 +6,9 @@
 #   loop: "{{ empty_drive }}"
 #--------------------------------------------------
 
+- debug:
+    msg: "Empty.................... {{empty_drive}}"
+
 - name: Create a new partition on Empty device
   become: true
   community.general.parted:

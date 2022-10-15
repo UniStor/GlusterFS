@@ -1,6 +1,9 @@
 ---
 # iterate over partitions, and keep if label matches `fs_label_prefix` i.e. "gluster."
 
+- name: update facts to get new filesystems
+  setup:
+
 - name: Clear from previous play
   set_fact:
     storage_partition: []

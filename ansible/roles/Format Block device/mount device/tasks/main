@@ -2,10 +2,6 @@
 
 # Using Brick Naming Convention: https://docs.gluster.org/en/latest/Administrator-Guide/Brick-Naming-Conventions/
 
-- name: update facts to get new filesystems
-  setup:
-
-
 - name: Mount in FStab by UUID
   become: true
   ansible.posix.mount:
